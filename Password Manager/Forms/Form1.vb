@@ -4,18 +4,37 @@
    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
       IO.Directory.CreateDirectory(s)
    End Sub
-   Dim aa As Boolean = False
+   Dim meVisible As Boolean = False
    Property FormVisible As Boolean
       Get
-         Return aa
+         Return meVisible
       End Get
       Set(value As Boolean)
-         aa = value
-         ShowInTaskbar = aa
+         meVisible = value
+         ShowInTaskbar = meVisible
          If value Then
             Me.Show()
          Else
             Me.Hide()
+         End If
+         If meVisible Then
+            Dim pass As Passwords = fscPasswords.GetSettings()
+            If pass Is Nothing Then
+               Dim g As New Generate_New_Password
+               If g.ShowDialog() = DialogResult.OK Then
+                  pass.masterPassword = g.TextBox1.Text
+                  fscPasswords.SetSettings(pass)
+               Else
+                  FormVisible = False
+               End If
+            Else
+               Dim m As New Enter_Master_Password
+               If m.ShowDialog = DialogResult.OK Then
+
+               Else
+                  FormVisible = False
+               End If
+            End If
          End If
       End Set
    End Property
