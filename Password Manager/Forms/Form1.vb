@@ -22,17 +22,24 @@
             If pass Is Nothing Then
                Dim g As New Generate_New_Password
                If g.ShowDialog() = DialogResult.OK Then
-                  pass.masterPassword = g.TextBox1.Text
-                  fscPasswords.SetSettings(pass)
+                  Dim aa As New Passwords() With {.masterPassword = g.TextBox1.Text}
+                  fscPasswords.SetSettings(aa)
                Else
                   FormVisible = False
                End If
             Else
+Enter_Master_Password:
                Dim m As New Enter_Master_Password
                If m.ShowDialog = DialogResult.OK Then
-
+                  Dim p As String = m.TextBox1.Text
+                  If pass.masterPassword = p Then
+                     'do nothing kase valid ang password
+                  Else
+                     ErrMsg("Wrong password")
+                     GoTo Enter_Master_Password
+                  End If
                Else
-                  FormVisible = False
+                     FormVisible = False
                End If
             End If
          End If

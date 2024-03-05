@@ -28,12 +28,14 @@ Partial Class Generate_New_Password
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(31, 29)
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBox1.Size = New System.Drawing.Size(214, 20)
         Me.TextBox1.TabIndex = 0
         '
@@ -46,6 +48,7 @@ Partial Class Generate_New_Password
         '
         Me.TextBox2.Location = New System.Drawing.Point(31, 74)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBox2.Size = New System.Drawing.Size(214, 20)
         Me.TextBox2.TabIndex = 2
         '
@@ -67,12 +70,22 @@ Partial Class Generate_New_Password
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Confirm Password"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(68, 109)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(107, 13)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Press Escape to hide"
+        '
         'Generate_New_Password
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(271, 131)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
@@ -90,4 +103,5 @@ Partial Class Generate_New_Password
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class

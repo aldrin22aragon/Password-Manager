@@ -67,7 +67,9 @@ Public Class FileSettingsCreator2(Of T)
          For Each i As String In txtLines
             tx = String.Concat(tx, crpt.Decrypt(i))
          Next
-         instanceOfT = JsonConvert.DeserializeObject(tx, instanceOfT.GetType)
+         Dim b = JsonConvert.DeserializeObject(tx, instanceOfT.GetType)
+         b = DirectCast(b, T)
+         instanceOfT = b
          'JsonConvert.PopulateObject(tx, instanceOfT)
       Catch ex As Exception
          If showError Then
